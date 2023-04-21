@@ -1,0 +1,61 @@
+plugins {
+    id 'java'
+    id("io.qameta.allure") version "2.9.6"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Jupiter
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    // Lombok
+    implementation 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    // Google.guava
+    implementation("com.google.guava:guava:20.0")
+    // jackson
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.2'
+    // okHttp
+    implementation("com.squareup.okhttp3:okhttp:4.8.1")
+    implementation("com.squareup.okhttp3:okhttp-urlconnection:4.8.1")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.8.1")
+    // GSON
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.9.0'
+    // AssertJ
+    testImplementation("org.assertj:assertj-core:3.13.1")
+    // Slf4J
+    implementation("org.slf4j:slf4j-simple:1.7.21")
+    implementation("org.slf4j:slf4j-api:1.7.26")
+    implementation("org.slf4j:jul-to-slf4j:1.7.26")
+    // Allure
+    testImplementation("io.qameta.allure:allure-junit5:2.13.6")
+    implementation("io.qameta.allure:allure-okhttp3:2.13.6")
+    implementation("io.qameta.allure:allure-attachments:2.13.6")
+}
+
+
+test {
+    if (tag == "$tag") {
+        useJUnitPlatform {
+            includeTags("$tag")
+        }
+    }
+
+    if (stand) {
+        println "Target stand: $stand"
+        stand = "/${stand}.properties"
+        jvmArgs += "-Dstand=${stand}"
+        jvmArgs += "-Dplatform-config=src/main/resources/${stand}"
+    }
+
+    reports {
+        html.enabled = false
+        junitXml.enabled = true
+    }
+}
