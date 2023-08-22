@@ -20,7 +20,7 @@ node {
         }
 
         try {
-            getTestStages(["TestOkHttp"])
+            getTestStages(["test"])
         } finally {
             stage ("Allure") {
                 generateAllure()
