@@ -55,7 +55,16 @@ def runTestWithTag(String tag) {
     }
 }
 
-// ... (ваш код)
+// Функция для клонирования репозитория
+def getProject(String repo, String branch) {
+    cleanWs()
+    checkout scm: [
+            $class           : 'GitSCM', branches: [[name: branch]],
+            userRemoteConfigs: [[
+                                        url: repo
+                                ]]
+    ]
+}
 
 // Функция для генерации отчета Allure
 def generateAllure() {
