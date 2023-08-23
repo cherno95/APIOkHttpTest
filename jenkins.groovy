@@ -47,10 +47,10 @@ node {
 def runTestWithTag(String tag) {
     try {
         // Выполняем команду для запуска тестов с заданным тегом
-        sh "chmod +x gradlew"
-        sh "./gradlew clean test -Ptag=${tag} -i"
-//        sh "chmod +x ${workspace}/Users/vchernomyrdin/IdeaProjects/OkHttpTestApi/gradlew"
-//        sh "${workspace}/Users/vchernomyrdin/IdeaProjects/OkHttpTestApi/gradlew clean test -Ptag=${tag} -i"
+//        sh "chmod +x gradlew"
+//        sh "./gradlew clean test -Ptag=${tag} -i"
+        sh "chmod +x /Users/vchernomyrdin/IdeaProjects/OkHttpTestApi/gradlew"
+        sh "/Users/vchernomyrdin/IdeaProjects/OkHttpTestApi/gradlew clean test -Ptag=${tag} -i"
     } finally {
         // Выводим сообщение в случае возникновения ошибок
         echo "some failed tests"
