@@ -32,7 +32,7 @@ node {
         stage("Run tests") {
             try {
                 // Запускаем тесты с тегом "apiTest"
-                runTestWithTag(["apiTest"])
+                runTestWithTag("apiTest")
             } finally {
                 // Этап "Allure" - генерируем отчет Allure
                 stage ("Allure") {
