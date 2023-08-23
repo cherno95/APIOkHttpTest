@@ -31,7 +31,7 @@ node {
         // Этап "Run tests" - запускаем тесты с тегом "test"
         try {
             // Запускаем тесты с тегом "apiTest"
-            getTestStages("apiTest")
+            getTestStages(["apiTest"])
         } finally {
             // Этап "Allure" - генерируем отчет Allure
             stage ("Allure") {
