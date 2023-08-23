@@ -55,10 +55,10 @@ def getTestStages(testTags) {
 
 
 // Функция для запуска тестов с указанным тегом
-def runTestWithTag(String stand, String tag) {
+def runTestWithTag(String tag) {
     try {
         // Выполняем команду для запуска тестов с заданным тегом
-        labelledShell(label: "Run ${tag}", script: "chmod +x gradlew \n./gradlew clean test -Pstand=${stand} -Ptag=${tag} -i")
+        labelledShell(label: "Run ${tag}", script: "chmod +x gradlew \n./gradlew test -Ptag=${tag} -i")
     } finally {
         // Выводим сообщение в случае возникновения ошибок
         echo "some failed tests"
