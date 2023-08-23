@@ -20,7 +20,7 @@ node {
         }
 
         try {
-            runTestWithTag("apiTests")
+            runTestWithTag("API")
         } finally {
             stage ("Allure") {
                 generateAllure()
