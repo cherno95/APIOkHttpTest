@@ -40,15 +40,12 @@ dependencies {
 }
 
 
-test {
-    if (tag == "$tag") {
-        useJUnitPlatform {
-            includeTags("$tag")
-        }
+def apiTest = tasks.register("apiTests", Test) {
+    useJUnitPlatform {
+        includeTags "API"
     }
+}
 
-    reports {
-        html.enabled = false
-        junitXml.enabled = true
-    }
+test {
+    useJUnitPlatform()
 }

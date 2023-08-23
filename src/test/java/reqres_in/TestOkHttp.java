@@ -29,7 +29,7 @@ public class TestOkHttp {
 
 
     @Test
-    @Tag("apiTest")
+    @Tag("API")
     @DisplayName("Позитивный кейс. Отправить валидный 'POST' запрос для создания пользователя. Ответ 201")
     public void postTestOne() throws IOException {
         Response response = new TestRqOkHttp(client).postCreate(host, new CreateRq("morpheus", "leader"));
@@ -46,7 +46,7 @@ public class TestOkHttp {
     }
 
     @Test
-    @Tag("apiTest")
+    @Tag("API")
     @DisplayName("Позитивный кейс. Отправить валидный 'GET' запрос для получения списка пользователей. Ответ 200")
     public void getTestOne() throws IOException {
         Response response = new TestRqOkHttp(client).getListUsers(host,"2");
@@ -70,7 +70,7 @@ public class TestOkHttp {
     }
 
     @Test
-    @Tag("apiTest")
+    @Tag("API")
     @DisplayName("Позитивный кейс. Отправить валидный 'GET' запрос для получения информации о пользователе. Ответ 200")
     public void getTestTwo() throws IOException {
         Response response = new TestRqOkHttp(client).getSingleUser(host, "2");
@@ -92,7 +92,7 @@ public class TestOkHttp {
     }
 
     @Test
-    @Tag("apiTest")
+    @Tag("API")
     @DisplayName("E2E сценарий. Позитивный кейс. " +
             "Отправить валидный 'POST' запрос для создания пользователя. Ответ 201." +
             "Отправить валидный 'PUT' запрос на имземенение данных. Ответ 200." +
@@ -138,7 +138,7 @@ public class TestOkHttp {
 
 
     @Test
-    @Tag("apiTest")
+    @Tag("API")
     @DisplayName("Негативный кейс. Отправить невалидный 'GET' запрос для получения информации о пользователе. Ответ 404")
     public void getTestFour() throws IOException {
         Response response = new TestRqOkHttp(client).getSingleUser(host,"23");
