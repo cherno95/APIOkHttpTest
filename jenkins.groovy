@@ -20,24 +20,13 @@ node {
         }
 
         try {
-            getTestStages("apiTests")
+            runTestWithTag("apiTests")
         } finally {
             stage ("Allure") {
                 generateAllure()
             }
         }
     }
-}
-
-
-def getTestStages(testTags) {
-    def stages = [:]
-    testTags.each { tag ->
-        stages["${tag}"] = {
-            runTestWithTag(tag)
-        }
-    }
-    return stages
 }
 
 
