@@ -30,8 +30,8 @@ node {
 
         // Этап "Run tests" - запускаем тесты с тегом "test"
         try {
-            // Запускаем тесты с тегом "test"
-            getTestStages(["apiTest"])
+            // Запускаем тесты с тегом "apiTest"
+            getTestStages("apiTest")
         } finally {
             // Этап "Allure" - генерируем отчет Allure
             stage ("Allure") {
@@ -55,10 +55,10 @@ def getTestStages(testTags) {
 
 
 // Функция для запуска тестов с указанным тегом
-def runTestWithTag(String tag) {
+def runTestWithTag(String stand, String tag) {
     try {
         // Выполняем команду для запуска тестов с заданным тегом
-        labelledShell(label: "Run ${tag}", script: "chmod +x gradlew \n./gradlew clean test -Pstand=${tag} -Ptag=${tag} -i")
+        labelledShell(label: "Run ${tag}", script: "chmod +x gradlew \n./gradlew clean test -Pstand=${stand} -Ptag=${tag} -i")
     } finally {
         // Выводим сообщение в случае возникновения ошибок
         echo "some failed tests"
