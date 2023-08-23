@@ -47,7 +47,7 @@ node {
 def runTestWithTag(String tag) {
     try {
         // Выполняем команду для запуска тестов с заданным тегом
-        sh "chmod +x gradlew"
+        sh "chmod +x ${workspace}/gradlew"
         sh "./gradlew clean test -Ptag=${tag}"
     } finally {
         // Выводим сообщение в случае возникновения ошибок
