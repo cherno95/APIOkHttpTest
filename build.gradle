@@ -47,13 +47,6 @@ test {
         }
     }
 
-    if (stand) {
-        println "Target stand: $stand"
-        stand = "/${stand}.properties"
-        jvmArgs += "-Dstand=${stand}"
-        jvmArgs += "-Dplatform-config=src/main/resources/${stand}"
-    }
-
     reports {
         html.enabled = false
         junitXml.enabled = true

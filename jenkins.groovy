@@ -28,53 +28,34 @@ node {
             }
         }
 
-        // Этап "Run tests" - запускаем тесты с тегом "test"
-        try {
-            // Запускаем тесты с тегом "apiTest"
-            getTestStages(["apiTest"])
-        } finally {
-            // Этап "Allure" - генерируем отчет Allure
-            stage ("Allure") {
-                generateAllure()
+        // Этап "Run tests" - запускаем тесты с тегом "apiTest"
+        stage("Run tests") {
+            try {
+                // Запускаем тесты с тегом "apiTest"
+                runTestWithTag("apiTest")
+            } finally {
+                // Этап "Allure" - генерируем отчет Allure
+                stage ("Allure") {
+                    generateAllure()
+                }
             }
         }
     }
 }
 
-// Функция для запуска тестов с заданным тегом
-def getTestStages(testTags) {
-    def stages = [:]
-    testTags.each { tag ->
-        stages["${tag}"] = {
-            // Запускаем тесты с заданным тегом
-            runTestWithTag(tag)
-        }
-    }
-    return stages
-}
-
-
 // Функция для запуска тестов с указанным тегом
 def runTestWithTag(String tag) {
     try {
         // Выполняем команду для запуска тестов с заданным тегом
-        labelledShell(label: "Run ${tag}", script: "chmod +x gradlew \n./gradlew test ${tag}")
+        sh "chmod +x gradlew"
+        sh "./gradlew clean test -Ptag=${tag}"
     } finally {
         // Выводим сообщение в случае возникновения ошибок
         echo "some failed tests"
     }
 }
 
-// Функция для клонирования репозитория
-def getProject(String repo, String branch) {
-    cleanWs()
-    checkout scm: [
-            $class           : 'GitSCM', branches: [[name: branch]],
-            userRemoteConfigs: [[
-                                        url: repo
-                                ]]
-    ]
-}
+// ... (ваш код)
 
 // Функция для генерации отчета Allure
 def generateAllure() {
