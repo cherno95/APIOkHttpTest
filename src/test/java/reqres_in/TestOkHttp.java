@@ -19,13 +19,14 @@ import java.io.IOException;
 import java.util.Objects;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static request.PropertyLoader.loadProperty;
 
 public class TestOkHttp {
 
     private final OkHttpClient client = new TestWrapperOkHttpClient();
     private static final Gson gson = new Gson();
 
-    private final String host = "reqres.in";
+    private static final String host = loadProperty("host");
 
 
     @Test
