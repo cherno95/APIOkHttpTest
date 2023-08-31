@@ -37,7 +37,7 @@ public class TestOkHttp {
         String responseBody = Objects.requireNonNull(response.body()).string();
 
         assertThat(response.code())
-                .withFailMessage("HTTP response code is not 200, fail message: "
+                .withFailMessage("HTTP response code is not 201, fail message: "
                         + responseBody)
                 .isEqualTo(201);
 
@@ -146,7 +146,7 @@ public class TestOkHttp {
         String responseBody = Objects.requireNonNull(response.body()).string();
 
         assertThat(response.code())
-                .withFailMessage("HTTP response code is not 200, fail message: "
+                .withFailMessage("HTTP response code is not 404, fail message: "
                         + responseBody)
                 .isEqualTo(404);
     }
